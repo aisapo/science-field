@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'ja' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <meta name="description" content="{{ page.excerpt | strip_html | escape }}">
+  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="{{ '/' | relative_url }}">
+    <span class="brand-mark">L</span>
+    <span>LEARBORATORY</span>
+  </a>
+  <nav>
+    <a href="{{ '/' | relative_url }}#articles">Articles</a>
+    <a href="{{ '/' | relative_url }}#favorites">Favorites</a>
+    <a href="{{ '/' | relative_url }}#about">About</a>
+    <a class="admin-link" href="https://app.pagescms.org/" target="_blank" rel="noopener">管理</a>
+  </nav>
+</header>
+
+<main class="post-page">
+  <a class="back" href="{{ '/' | relative_url }}">← 記事一覧へ戻る</a>
+  <article>
+    <header class="post-header">
+      <span class="tag">{{ page.category }}</span>
+      <h1>{{ page.title }}</h1>
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y.%m.%d" }}</time>
+      {% if page.thumbnail %}
+      <img class="post-hero" src="{{ page.thumbnail | relative_url }}" alt="">
+      {% endif %}
+      <button class="favorite-button" type="button" aria-pressed="false"
+        data-favorite-url="{{ page.url | relative_url }}"
+        data-favorite-title="{{ page.title | escape }}"
+        data-favorite-category="{{ page.category | escape }}">☆ お気に入りに追加</button>
+    </header>
+    <div class="post-body">{{ content }}</div>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div>LEARBORATORY</div>
+  <div>SCIENCE FIELD</div>
+</footer>
+<script>
+(function () {
+  const KEY = 'learboratory:favorites:v1';
+  const button = document.querySelector('.favorite-button');
+  if (!button) return;
+
+  function load() {
+    try {
+      const value = JSON.parse(localStorage.getItem(KEY) || '[]');
+      return Array.isArray(value) ? value : [];
+    } catch (_) { return []; }
+  }
+
+  function update() {
+    const active = load().some(item => item.url === button.dataset.favoriteUrl);
+    button.textContent = active ? '★ お気に入りから削除' : '☆ お気に入りに追加';
+    button.classList.toggle('is-favorite', active);
+    button.setAttribute('aria-pressed', String(active));
+  }
+
+  button.addEventListener('click', function () {
+    const items = load();
+    const url = button.dataset.favoriteUrl;
+    const exists = items.some(item => item.url === url);
+    const item = {
+      url,
+      title: button.dataset.favoriteTitle,
+      category: button.dataset.favoriteCategory || 'SCIENCE'
+    };
+    localStorage.setItem(KEY, JSON.stringify(exists ? items.filter(i => i.url !== url) : [item, ...items]));
+    update();
+  });
+
+  update();
+})();
+</script>
+</body>
+</html>

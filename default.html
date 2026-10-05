@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'ja' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | escape }}">
+  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="{{ '/' | relative_url }}">
+    <span class="brand-mark">L</span>
+    <span>LEARBORATORY</span>
+  </a>
+  <nav>
+    <a href="{{ '/' | relative_url }}#articles">Articles</a>
+    <a href="{{ '/' | relative_url }}#favorites">Favorites</a>
+    <a href="{{ '/' | relative_url }}#about">About</a>
+    <a class="admin-link" href="https://app.pagescms.org/" target="_blank" rel="noopener">管理</a>
+  </nav>
+</header>
+
+<main>{{ content }}</main>
+
+<footer class="site-footer">
+  <div>LEARBORATORY</div>
+  <div>SCIENCE FIELD</div>
+</footer>
+<script>
+(function () {
+  const KEY = 'learboratory:favorites:v1';
+
+  function loadFavorites() {
+    try {
+      const value = JSON.parse(localStorage.getItem(KEY) || '[]');
+      return Array.isArray(value) ? value : [];
+    } catch (_) {
+      return [];
+    }
+  }
+
+  function saveFavorites(items) {
+    localStorage.setItem(KEY, JSON.stringify(items));
+  }
+
+  function isFavorite(url) {
+    return loadFavorites().some(item => item.url === url);
+  }
+
+  function setFavorite(item, button) {
+    const items = loadFavorites();
+    const exists = items.some(entry => entry.url === item.url);
+    const next = exists
+      ? items.filter(entry => entry.url !== item.url)
+      : [item, ...items];
+    saveFavorites(next);
+    updateFavoriteButton(button, item.url);
+    renderFavorites();
+  }
+
+  function updateFavoriteButton(button, url) {
+    if (!button) return;
+    const active = isFavorite(url);
+    button.textContent = active ? '★ お気に入りから削除' : '☆ お気に入りに追加';
+    button.classList.toggle('is-favorite', active);
+    button.setAttribute('aria-pressed', String(active));
+  }
+
+  function renderFavorites() {
+    const list = document.getElementById('favorites-list');
+    if (!list) return;
+
+    const clear = document.getElementById('clear-favorites');
+    const items = loadFavorites();
+    list.replaceChildren();
+
+    if (!items.length) {
+      const empty = document.createElement('p');
+      empty.className = 'empty-state';
+      empty.textContent = 'まだお気に入りの記事はありません。記事ページの「☆ お気に入りに追加」から保存できます。';
+      list.appendChild(empty);
+      if (clear) clear.hidden = true;
+      return;
+    }
+
+    if (clear) clear.hidden = false;
+
+    items.forEach(item => {
+      const link = document.createElement('a');
+      link.className = 'favorite-row';
+      link.href = item.url;
+
+      const text = document.createElement('div');
+      const tag = document.createElement('span');
+      tag.className = 'tag';
+      tag.textContent = item.category || 'SCIENCE';
+      const title = document.createElement('h3');
+      title.textContent = item.title;
+      text.append(tag, title);
+
+      const arrow = document.createElement('span');
+      arrow.className = 'arrow';
+      arrow.textContent = '→';
+      link.append(text, arrow);
+      list.appendChild(link);
+    });
+  }
+
+  document.querySelectorAll('.favorite-button').forEach(button => {
+    const item = {
+      url: button.dataset.favoriteUrl,
+      title: button.dataset.favoriteTitle,
+      category: button.dataset.favoriteCategory || 'SCIENCE'
+    };
+    updateFavoriteButton(button, item.url);
+    button.addEventListener('click', () => setFavorite(item, button));
+  });
+
+  const clear = document.getElementById('clear-favorites');
+  if (clear) {
+    clear.addEventListener('click', () => {
+      saveFavorites([]);
+      document.querySelectorAll('.favorite-button').forEach(button => {
+        updateFavoriteButton(button, button.dataset.favoriteUrl);
+      });
+      renderFavorites();
+    });
+  }
+
+  renderFavorites();
+})();
+</script>
+</body>
+</html>

@@ -13,3 +13,11 @@ Pages CMS: https://app.pagescms.org/
 ## 公開
 
 GitHub Pages が `main` ブランチの root をソースにしていれば、コミット後にJekyllで自動ビルドされます。
+
+
+## 追加機能
+
+- ヘッダーの「管理」から Pages CMS を開けます。Pages CMS 側で GitHub 認証が必要です。
+- 記事ページの「お気に入り」ボタンは、同じブラウザの `localStorage` に保存されます。
+- トップページの「お気に入り」から保存した記事を一覧できます。
+- 現時点では広告・アフィリエイト機能は含めていません。
