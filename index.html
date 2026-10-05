@@ -1,122 +1,103 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="高校生が科学を実験・勉強・研究の視点からわかりやすく解説する科学ブログ。">
-  <title>SCIENCE FIELD | 科学を、もっと身近に。</title>
-  <link rel="stylesheet" href="assets/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="LEARBORATORY - 科学を、もっと身近に。化学・生物・微生物・農業と環境について考える科学メディア。">
+<title>LEARBORATORY | SCIENCE FIELD</title>
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-<header class="site-header">
-  <div class="wrap nav">
-    <a class="logo" href="index.html"><span>SCIENCE</span> FIELD</a>
+<header>
+  <div class="header-inner">
+    <a class="brand" href="index.html">LEARBORATORY</a>
     <nav>
-      <a href="#articles">記事</a>
-      <a href="#categories">カテゴリ</a>
-      <a href="#about">このブログについて</a>
+      <a href="#field">SCIENCE FIELD</a>
+      <a href="#about">ABOUT</a>
     </nav>
   </div>
 </header>
 
 <main>
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <p class="eyebrow">SCIENCE × EXPERIMENT × LEARNING</p>
-        <h1>科学を、<br><em>もっと身近に。</em></h1>
-        <p class="lead">化学・生物・実験・研究を、高校生の目線から掘り下げる科学ブログ。</p>
-        <a class="button" href="#articles">記事を読む →</a>
-      </div>
-      <div class="hero-card">
-        <div class="atom">⚗</div>
-        <p>「なぜ？」をそのままにしない。</p>
-        <small>CHEMISTRY / BIOLOGY / FIELDWORK</small>
-      </div>
-    </div>
-  </section>
+<section class="hero">
+  <div class="hero-copy">
+    <p class="label">SCIENCE FIELD</p>
+    <h1>科学を、<br>もっと身近に。</h1>
+    <p>化学・生物・微生物・農業・環境。<br>「なぜ？」から科学を考える。</p>
+  </div>
 
-  <section id="articles" class="section wrap">
-    <div class="section-head">
-      <div>
-        <p class="eyebrow">LATEST ARTICLES</p>
-        <h2>新着記事</h2>
-      </div>
-      <a href="posts/example.html">すべての記事 →</a>
+  <div class="slider" aria-label="注目の記事">
+    <a class="slide active" href="posts/example.html">
+      <div class="slide-image image-chemistry"><span>CHEMISTRY</span></div>
+      <div class="slide-info"><span>CHEMISTRY</span><h2>「なぜ？」から始める高校化学</h2><p>暗記だけでは見えない反応のしくみ。</p></div>
+    </a>
+    <a class="slide" href="posts/example.html">
+      <div class="slide-image image-biology"><span>BIOLOGY</span></div>
+      <div class="slide-info"><span>BIOLOGY</span><h2>窒素固定細菌は何をしている？</h2><p>微生物と植物の関係を考える。</p></div>
+    </a>
+    <a class="slide" href="posts/example.html">
+      <div class="slide-image image-field"><span>FIELDWORK</span></div>
+      <div class="slide-info"><span>FIELDWORK</span><h2>科学を「調べる」から「確かめる」へ</h2><p>実験と観察から考えてみる。</p></div>
+    </a>
+    <div class="dots">
+      <button class="dot active" aria-label="1枚目"></button>
+      <button class="dot" aria-label="2枚目"></button>
+      <button class="dot" aria-label="3枚目"></button>
     </div>
+  </div>
+</section>
 
-    <div class="article-grid">
-      <article class="article-card featured">
-        <div class="thumb chemistry">CHEMISTRY</div>
-        <div class="card-body">
-          <span class="tag">化学</span>
-          <h3><a href="posts/example.html">「なぜ？」から始める高校化学。暗記だけでは見えない反応のしくみ</a></h3>
-          <p>高校化学の反応を、丸暗記ではなく粒子の動きから考えてみる。</p>
-          <time>2026.10.05</time>
-        </div>
-      </article>
+<section id="field" class="field">
+  <div class="section-title"><p class="label">SCIENCE FIELD</p><h2>Explore science.</h2></div>
+  <div class="categories">
+    <a href="#"><b>Chemistry</b><span>化学</span></a>
+    <a href="#"><b>Biology</b><span>生物・微生物</span></a>
+    <a href="#"><b>Agriculture</b><span>農業・環境</span></a>
+    <a href="#"><b>Experiments</b><span>実験・研究</span></a>
+  </div>
+</section>
 
-      <article class="article-card">
-        <div class="thumb biology">BIOLOGY</div>
-        <div class="card-body">
-          <span class="tag green">生物</span>
-          <h3><a href="posts/example.html">窒素固定細菌は何をしている？ 微生物と植物の関係</a></h3>
-          <p>身近な農業にもつながる「窒素固定」を高校生物から一歩深く。</p>
-          <time>2026.10.03</time>
-        </div>
-      </article>
+<section class="articles">
+  <div class="section-title"><p class="label">LATEST</p><h2>Latest articles.</h2></div>
+  <div class="article-list">
+    <a class="article" href="posts/example.html">
+      <div class="thumb image-chemistry"><span>CHEMISTRY</span></div>
+      <div><span class="meta">CHEMISTRY · 2026.10.05</span><h3>「なぜ？」から始める高校化学。暗記だけでは見えない反応のしくみ</h3><p>化学反応を粒子の視点から考えてみる。</p></div>
+    </a>
+    <a class="article" href="posts/example.html">
+      <div class="thumb image-biology"><span>BIOLOGY</span></div>
+      <div><span class="meta">BIOLOGY · 2026.10.03</span><h3>窒素固定細菌は何をしている？</h3><p>農業にもつながる窒素固定を考える。</p></div>
+    </a>
+    <a class="article" href="posts/example.html">
+      <div class="thumb image-field"><span>FIELDWORK</span></div>
+      <div><span class="meta">EXPERIMENTS · 2026.09.28</span><h3>高校生の科学実験で大切な対照実験</h3><p>面白いだけで終わらない実験設計。</p></div>
+    </a>
+  </div>
+</section>
 
-      <article class="article-card">
-        <div class="thumb experiment">LAB</div>
-        <div class="card-body">
-          <span class="tag orange">実験</span>
-          <h3><a href="posts/example.html">高校生でもできる科学実験を考えるときのポイント</a></h3>
-          <p>安全性、再現性、測定方法。面白いだけで終わらない実験設計。</p>
-          <time>2026.09.28</time>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section id="categories" class="section alt">
-    <div class="wrap">
-      <p class="eyebrow">CATEGORIES</p>
-      <h2>興味のあるところから</h2>
-      <div class="category-grid">
-        <a class="category" href="#"><strong>化学</strong><span>反応・理論・入試</span></a>
-        <a class="category" href="#"><strong>生物</strong><span>細胞・生態・微生物</span></a>
-        <a class="category" href="#"><strong>実験</strong><span>実験・観察・研究</span></a>
-        <a class="category" href="#"><strong>農業と環境</strong><span>微生物・土壌・農薬</span></a>
-      </div>
-    </div>
-  </section>
-
-  <section class="ad-section wrap">
-    <div class="ad-box">
-      <span>ADVERTISEMENT</span>
-      <p>ここに広告を配置できます</p>
-      <small>※広告サービス審査後にコードを設置</small>
-    </div>
-  </section>
-
-  <section id="about" class="about wrap">
-    <div>
-      <p class="eyebrow">ABOUT</p>
-      <h2>このブログについて</h2>
-    </div>
-    <div>
-      <p>SCIENCE FIELDは、科学を「答えを覚えるもの」ではなく、「現象から考えるもの」として楽しむためのブログです。</p>
-      <p>高校生の勉強、実験、研究活動を出発点に、化学・生物・微生物・農業・環境まで掘り下げていきます。</p>
-    </div>
-  </section>
+<section id="about" class="about">
+  <p class="label">ABOUT LEARBORATORY</p>
+  <h2>Science is a question.</h2>
+  <p>LEARBORATORYは、科学を「答えを覚えるもの」ではなく、「現象から考えるもの」として楽しむための科学メディアです。</p>
+</section>
 </main>
 
 <footer>
-  <div class="wrap footer-inner">
-    <div><strong>SCIENCE FIELD</strong><p>Science, one question at a time.</p></div>
-    <div class="footer-links"><a href="#">プライバシーポリシー</a><a href="#">お問い合わせ</a></div>
-  </div>
-  <p class="copyright">© 2026 SCIENCE FIELD</p>
+  <div class="footer-inner"><strong>LEARBORATORY</strong><span>SCIENCE FIELD</span></div>
+  <small>© 2026 LEARBORATORY</small>
 </footer>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')];
+const dots=[...document.querySelectorAll('.dot')];
+let current=0;
+function show(i){
+  current=i;
+  slides.forEach((s,n)=>s.classList.toggle('active',n===i));
+  dots.forEach((d,n)=>d.classList.toggle('active',n===i));
+}
+dots.forEach((d,i)=>d.addEventListener('click',()=>show(i)));
+setInterval(()=>show((current+1)%slides.length),5000);
+</script>
 </body>
 </html>
