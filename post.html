@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'ja' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <meta name="description" content="{{ page.excerpt | strip_html | escape }}">
+  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="{{ '/' | relative_url }}">
+    <span class="brand-mark">L</span>
+    <span>LEARBORATORY</span>
+  </a>
+  <nav>
+    <a href="{{ '/' | relative_url }}#articles">Articles</a>
+    <a href="{{ '/' | relative_url }}#about">About</a>
+  </nav>
+</header>
+
+<main class="post-page">
+  <a class="back" href="{{ '/' | relative_url }}">← 記事一覧へ戻る</a>
+  <article>
+    <header class="post-header">
+      <span class="tag">{{ page.category }}</span>
+      <h1>{{ page.title }}</h1>
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y.%m.%d" }}</time>
+      {% if page.thumbnail %}
+      <img class="post-hero" src="{{ page.thumbnail | relative_url }}" alt="">
+      {% endif %}
+    </header>
+    <div class="post-body">{{ content }}</div>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div>LEARBORATORY</div>
+  <div>SCIENCE FIELD</div>
+</footer>
+</body>
+</html>

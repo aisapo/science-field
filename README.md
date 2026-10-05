@@ -1,5 +1,15 @@
-# LEARBORATORY CMS
+# LEARBORATORY
 
-`admin/` に記事作成画面があります。
+GitHub Pages + Jekyll + Pages CMS で動かすサイエンスメディアです。
 
-重要: GitHub Pagesだけでは、ブラウザ上の「公開」ボタンからGitHubへ書き込むことはできません。実際のワンクリック公開にはGitHub OAuth等の認証設定が必要です。この版では安全のため、記事HTMLを生成してGitHubへ登録する方式にしています。
+## CMS
+
+Pages CMS: https://app.pagescms.org/
+
+リポジトリに `.pages.yml` があるので、GitHubでログインして `aisapo/science-field` を開くと、`Articles` から記事を作成・編集できます。
+
+記事本文は `_posts/` のMarkdownとして保存され、画像は `images/` に保存されます。
+
+## 公開
+
+GitHub Pages が `main` ブランチの root をソースにしていれば、コミット後にJekyllで自動ビルドされます。

@@ -1,1 +1,74 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LEARBORATORY Admin</title><style>body{font-family:system-ui,sans-serif;max-width:900px;margin:auto;padding:30px;background:#f7f5ee;color:#26352d}input,select,textarea{width:100%;padding:12px;margin:6px 0 18px;border:1px solid #ccd5ca;background:white;font:inherit}textarea{min-height:350px}button{padding:13px 22px;border:0;background:#344d3d;color:white;font-weight:700;cursor:pointer}h1{font-family:Georgia,serif}.note{background:#e8eee5;padding:15px;margin-bottom:20px}</style></head><body><h1>LEARBORATORY Admin</h1><div class="note">ここで記事を作成できます。公開時には生成されたHTMLをGitHubの <b>posts/</b> に追加し、トップページへ掲載します。</div><label>タイトル</label><input id="title" placeholder="記事タイトル"><label>カテゴリー</label><select id="cat"><option>Biology</option><option>Chemistry</option><option>Agriculture</option><option>Experiments</option></select><label>日付</label><input id="date" type="date"><label>本文</label><textarea id="body" placeholder="記事本文を入力"></textarea><button id="make">記事HTMLを生成</button><pre id="out" style="white-space:pre-wrap;background:white;padding:15px;margin-top:20px"></pre><script>document.querySelector("#date").value=new Date().toISOString().slice(0,10);document.querySelector("#make").onclick=()=>{const t=document.querySelector("#title").value.trim(),c=document.querySelector("#cat").value,d=document.querySelector("#date").value,b=document.querySelector("#body").value;if(!t||!b){alert("タイトルと本文を入力してください");return}const slug=t.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")||"article-"+Date.now();const html=`<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${t} | LEARBORATORY</title><link rel="stylesheet" href="../style.css"></head><body><header class="site-header"><a class="brand" href="../index.html">LEARBORATORY</a></header><main><article class="section"><p class="eyebrow">${c}</p><h1>${t}</h1><p>${d}</p><div>${b.split("\\n").map(x=>"<p>"+x+"</p>").join("")}</div></article></main></body></html>`;document.querySelector("#out").textContent=html;};</script></body></html>
+---
+layout: default
+title: LEARBORATORY
+---
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">SCIENCE FIELD</p>
+    <h1>LEARBORATORY</h1>
+    <p class="hero-lead">学ぶ。試す。考える。<br>科学を、自分の手で探究する。</p>
+    <a class="button" href="#articles">記事を読む</a>
+  </div>
+</section>
+
+<section class="featured" aria-labelledby="featured-title">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">FEATURED</p>
+      <h2 id="featured-title">注目の記事</h2>
+    </div>
+  </div>
+  <div class="featured-grid">
+    {% assign featured_posts = site.posts | slice: 0, 3 %}
+    {% for post in featured_posts %}
+    <a class="feature-card" href="{{ post.url | relative_url }}">
+      {% if post.thumbnail %}
+      <img src="{{ post.thumbnail | relative_url }}" alt="" loading="lazy">
+      {% else %}
+      <div class="thumb-placeholder"><span>SCIENCE</span></div>
+      {% endif %}
+      <div class="card-body">
+        <span class="tag">{{ post.category }}</span>
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.excerpt | strip_html | truncate: 90 }}</p>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="articles" id="articles" aria-labelledby="articles-title">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">LATEST</p>
+      <h2 id="articles-title">最新の記事</h2>
+    </div>
+  </div>
+  <div class="article-list">
+    {% for post in site.posts %}
+    <a class="article-row" href="{{ post.url | relative_url }}">
+      <div class="row-thumb">
+        {% if post.thumbnail %}
+        <img src="{{ post.thumbnail | relative_url }}" alt="" loading="lazy">
+        {% else %}
+        <div class="thumb-placeholder"><span>SCIENCE</span></div>
+        {% endif %}
+      </div>
+      <div class="row-content">
+        <div class="meta"><span class="tag">{{ post.category }}</span><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time></div>
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.excerpt | strip_html | truncate: 130 }}</p>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div>
+    <p class="eyebrow">ABOUT</p>
+    <h2>LEARBORATORYについて</h2>
+  </div>
+  <p>LEARBORATORYは、LEARNとLABORATORYを組み合わせた名前です。教科書の知識だけで終わらせず、実験・観察・調査を通して科学を探究するための場所を目指します。</p>
+</section>

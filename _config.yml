@@ -1,0 +1,18 @@
+title: LEARBORATORY
+description: 学びと実験をつなぐサイエンスメディア
+url: "https://aisapo.github.io"
+baseurl: "/science-field"
+lang: ja
+markdown: kramdown
+permalink: /posts/:title/
+collections:
+  posts:
+    output: true
+    permalink: /posts/:title/
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      author: LEARBORATORY
