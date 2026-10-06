@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320">
+<path d="M160 20C108 20 83 48 73 83C61 124 28 128 28 174C28 232 72 278 133 293C194 308 263 284 287 230C307 186 286 151 272 121C253 80 224 20 160 20Z" fill="#315f50" fill-opacity=".92" stroke="#1c2522" stroke-width="9" stroke-linejoin="round"/>
+<circle cx="91" cy="112" r="12" fill="#f7f8f5" stroke="#1c2522" stroke-width="5"/>
+<circle cx="226" cy="88" r="10" fill="#f7f8f5" stroke="#1c2522" stroke-width="5"/>
+<circle cx="252" cy="210" r="13" fill="#f7f8f5" stroke="#1c2522" stroke-width="5"/>
+<circle cx="72" cy="219" r="9" fill="#315f50" stroke="#1c2522" stroke-width="5"/>
+<path d="M76 154C93 137 111 136 121 148C130 159 123 174 108 176C94 178 90 191 104 198C117 205 130 198 139 190" fill="none" stroke="#f7f8f5" stroke-width="12" stroke-linecap="round"/>
+<path d="M150 216V151C150 136 161 127 173 128C187 129 193 141 192 154L190 216" fill="none" stroke="#f7f8f5" stroke-width="12" stroke-linecap="round"/>
+<path d="M213 145C195 143 184 156 188 170C191 182 203 188 216 187C228 186 237 177 235 164C233 153 224 147 213 145Z" fill="none" stroke="#f7f8f5" stroke-width="9"/>
+<text x="159" y="254" text-anchor="middle" fill="#f7f8f5" font-family="Arial,Helvetica,sans-serif" font-size="31" font-weight="700" letter-spacing="2">LERBO</text>
+</svg>
