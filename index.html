@@ -2,86 +2,11 @@
 layout: default
 title: LEARBORATORY
 ---
-<section class="hero">
-  <div class="hero-copy">
-    <p class="eyebrow">SCIENCE FIELD</p>
-    <h1>LEARBORATORY</h1>
-    <p class="hero-lead">学ぶ。試す。考える。<br>科学を、自分の手で探究する。</p>
-    <a class="button" href="#articles">記事を読む</a>
-  </div>
-</section>
-
-<section class="featured" aria-labelledby="featured-title">
-  <div class="section-head">
-    <div>
-      <p class="eyebrow">FEATURED</p>
-      <h2 id="featured-title">注目の記事</h2>
-    </div>
-  </div>
-  <div class="featured-grid">
-    {% assign featured_posts = site.posts | slice: 0, 3 %}
-    {% for post in featured_posts %}
-    <a class="feature-card" href="{{ post.url | relative_url }}">
-      {% if post.thumbnail %}
-      <img src="{{ post.thumbnail | relative_url }}" alt="" loading="lazy">
-      {% else %}
-      <div class="thumb-placeholder"><span>SCIENCE</span></div>
-      {% endif %}
-      <div class="card-body">
-        <span class="tag">{{ post.category }}</span>
-        <h3>{{ post.title }}</h3>
-        <p>{{ post.excerpt | strip_html | truncate: 90 }}</p>
-      </div>
-    </a>
-    {% endfor %}
-  </div>
-</section>
-
-<section class="favorites" id="favorites" aria-labelledby="favorites-title">
-  <div class="section-head">
-    <div>
-      <p class="eyebrow">BOOKMARKS</p>
-      <h2 id="favorites-title">お気に入り</h2>
-    </div>
-    <button class="text-button" id="clear-favorites" type="button" hidden>すべて解除</button>
-  </div>
-  <div id="favorites-list" class="favorites-list">
-    <p class="empty-state">まだお気に入りの記事はありません。記事ページの「☆ お気に入りに追加」から保存できます。</p>
-  </div>
-</section>
-
-<section class="articles" id="articles" aria-labelledby="articles-title">
-  <div class="section-head">
-    <div>
-      <p class="eyebrow">LATEST</p>
-      <h2 id="articles-title">最新の記事</h2>
-    </div>
-  </div>
-  <div class="article-list">
-    {% for post in site.posts %}
-    <a class="article-row" href="{{ post.url | relative_url }}">
-      <div class="row-thumb">
-        {% if post.thumbnail %}
-        <img src="{{ post.thumbnail | relative_url }}" alt="" loading="lazy">
-        {% else %}
-        <div class="thumb-placeholder"><span>SCIENCE</span></div>
-        {% endif %}
-      </div>
-      <div class="row-content">
-        <div class="meta"><span class="tag">{{ post.category }}</span><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time></div>
-        <h3>{{ post.title }}</h3>
-        <p>{{ post.excerpt | strip_html | truncate: 130 }}</p>
-      </div>
-      <span class="arrow">→</span>
-    </a>
-    {% endfor %}
-  </div>
-</section>
-
-<section class="about" id="about">
-  <div>
-    <p class="eyebrow">ABOUT</p>
-    <h2>LEARBORATORYについて</h2>
-  </div>
-  <p>LEARBORATORYは、LEARNとLABORATORYを組み合わせた名前です。教科書の知識だけで終わらせず、実験・観察・調査を通して科学を探究するための場所を目指します。</p>
-</section>
+<section class="hero"><div class="hero-copy"><p class="eyebrow">SCIENCE FIELD</p><h1>LEARBORATORY</h1><p class="hero-lead">学ぶ。試す。考える。<br>科学を、自分の手で探究する。</p><a class="button" href="#articles">記事を読む</a></div></section>
+<section class="featured" aria-labelledby="featured-title"><div class="section-head"><div><p class="eyebrow">FEATURED</p><h2 id="featured-title">注目の記事</h2></div></div><div class="featured-grid">{% assign featured_posts = site.posts | slice: 0, 3 %}{% for post in featured_posts %}<a class="feature-card" href="{{ post.url | relative_url }}">{% if post.thumbnail %}<img src="{{ post.thumbnail }}" alt="" loading="lazy">{% else %}<div class="thumb-placeholder"><span>SCIENCE</span></div>{% endif %}<div class="card-body"><span class="tag">{{ post.category }}</span><h3>{{ post.title }}</h3><p>{{ post.excerpt | strip_html | truncate: 90 }}</p></div></a>{% endfor %}</div></section>
+<section class="favorites" id="favorites" aria-labelledby="favorites-title"><div class="section-head"><div><p class="eyebrow">BOOKMARKS</p><h2 id="favorites-title">お気に入り</h2></div><button class="text-button" id="clear-favorites" type="button" hidden>すべて解除</button></div><div id="favorites-list" class="favorites-list"></div></section>
+<section class="articles" id="articles" aria-labelledby="articles-title"><div class="section-head"><div><p class="eyebrow">LATEST</p><h2 id="articles-title">最新の記事</h2></div></div><div class="article-list">{% for post in site.posts %}<a class="article-row" href="{{ post.url | relative_url }}"><div class="row-thumb">{% if post.thumbnail %}<img src="{{ post.thumbnail }}" alt="" loading="lazy">{% else %}<div class="thumb-placeholder"><span>SCIENCE</span></div>{% endif %}</div><div class="row-content"><div class="meta"><span class="tag">{{ post.category }}</span><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time></div><h3>{{ post.title }}</h3><p>{{ post.excerpt | strip_html | truncate: 130 }}</p></div><span class="arrow">→</span></a>{% endfor %}</div></section>
+<section class="about" id="about"><div><p class="eyebrow">ABOUT</p><h2>LEARBORATORYについて</h2></div><p>LEARBORATORYは、LEARNとLABORATORYを組み合わせた名前です。教科書の知識だけで終わらせず、実験・観察・調査を通して科学を探究するための場所を目指します。</p></section>
+<script>
+(function(){const KEY="learboratory_favorites";const posts=[{% for post in site.posts %}{url:{{ post.url | relative_url | jsonify }},title:{{ post.title | jsonify }},category:{{ post.category | jsonify }},excerpt:{{ post.excerpt | strip_html | truncate: 130 | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}];function get(){try{return JSON.parse(localStorage.getItem(KEY)||"[]")}catch(e){return[]}}function save(v){localStorage.setItem(KEY,JSON.stringify(v))}function render(){const list=document.getElementById("favorites-list"),clear=document.getElementById("clear-favorites"),selected=posts.filter(function(p){return get().includes(p.url)});if(!selected.length){list.innerHTML='<p class="empty-state">まだお気に入りの記事はありません。記事ページの「☆ お気に入りに追加」から保存できます。</p>';clear.hidden=true;return}clear.hidden=false;list.innerHTML=selected.map(function(p){return '<a class="favorite-row" href="'+p.url+'"><div><span class="tag">'+(p.category||"SCIENCE")+'</span><h3>'+p.title+'</h3><p>'+(p.excerpt||"")+'</p></div><span class="arrow">→</span></a>'}).join("")}document.getElementById("clear-favorites").addEventListener("click",function(){save([]);render()});render()})();
+</script>
