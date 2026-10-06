@@ -75,77 +75,31 @@ h2{font-size:clamp(28px,4vw,42px);line-height:1.2;letter-spacing:-.03em;margin:0
 }
 
 
-/* Loading screen */
-.site-loader{
-  position:fixed;
-  inset:0;
-  z-index:9999;
-  display:grid;
-  place-items:center;
-  background:var(--paper);
-  opacity:1;
-  visibility:visible;
-  transition:opacity .45s ease,visibility .45s ease;
-}
-.site-loader.is-hidden{
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
-}
-.site-loader-inner{
-  width:min(230px,62vw);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-}
-.site-loader-logo{
-  width:min(155px,44vw);
-  height:auto;
-  object-fit:contain;
-  display:block;
-}
-.site-loader-name{
-  margin-top:18px;
-  color:var(--ink);
-  font-size:12px;
-  font-weight:500;
-  letter-spacing:.34em;
-  line-height:1;
-  text-indent:.34em;
-}
-.site-loader-track{
-  width:min(190px,52vw);
-  height:2px;
-  margin-top:22px;
-  overflow:hidden;
-  background:var(--line);
-}
-.site-loader-bar{
-  display:block;
-  width:42%;
-  height:100%;
-  background:var(--accent);
-  transform:translateX(-110%);
-  animation:site-loader-progress 1.05s cubic-bezier(.4,0,.2,1) infinite;
-}
-@keyframes site-loader-progress{
-  0%{transform:translateX(-110%)}
-  55%{transform:translateX(125%)}
-  100%{transform:translateX(250%)}
-}
-@media (prefers-reduced-motion:reduce){
-  .site-loader-bar{animation:none;transform:translateX(0);width:100%}
-  .site-loader{transition:none}
-}
 
+/* LEARBORATORY brand mark + loader */
+.brand-mark{display:grid;place-items:center;width:30px;height:30px;border:0;border-radius:0;overflow:visible}
+.brand-mark img{width:30px;height:30px;object-fit:contain}
 
-/* Loading screen */
 .site-loader{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:var(--paper);opacity:1;visibility:visible;transition:opacity .45s ease,visibility .45s ease}
 .site-loader.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
-.site-loader-inner{width:min(230px,62vw);display:flex;flex-direction:column;align-items:center}
-.site-loader-logo{width:min(155px,44vw);height:auto;object-fit:contain;display:block}
-.site-loader-name{margin-top:18px;color:var(--ink);font-size:12px;font-weight:500;letter-spacing:.34em;line-height:1;text-indent:.34em}
+.site-loader-inner{width:min(240px,62vw);display:flex;flex-direction:column;align-items:center}
+.loader-logo-wrap{position:relative;width:min(175px,48vw);height:min(175px,48vw);display:grid;place-items:center}
+.site-loader-logo{width:100%;height:100%;object-fit:contain;display:block}
+.loader-bubble{position:absolute;bottom:86%;left:50%;width:8px;height:8px;border-radius:50%;background:var(--accent);opacity:0;animation:loader-bubble-rise 1.45s ease-out infinite}
+.loader-bubble.b1{margin-left:-5px;width:7px;height:7px;animation-delay:.15s}
+.loader-bubble.b2{margin-left:17px;width:10px;height:10px;animation-delay:.55s}
+.loader-bubble.b3{margin-left:-26px;width:6px;height:6px;animation-delay:.9s}
+@keyframes loader-bubble-rise{
+  0%{transform:translate3d(0,18px,0) scale(.65);opacity:0}
+  18%{opacity:.85}
+  100%{transform:translate3d(-7px,-48px,0) scale(1);opacity:0}
+}
+.site-loader-name{margin-top:16px;color:var(--ink);font-size:12px;font-weight:500;letter-spacing:.34em;line-height:1;text-indent:.34em}
 .site-loader-track{width:min(190px,52vw);height:2px;margin-top:22px;overflow:hidden;background:var(--line)}
 .site-loader-bar{display:block;width:42%;height:100%;background:var(--accent);transform:translateX(-110%);animation:site-loader-progress 1.05s cubic-bezier(.4,0,.2,1) infinite}
 @keyframes site-loader-progress{0%{transform:translateX(-110%)}55%{transform:translateX(125%)}100%{transform:translateX(250%)}}
-@media (prefers-reduced-motion:reduce){.site-loader-bar{animation:none;transform:translateX(0);width:100%}.site-loader{transition:none}}
+@media (prefers-reduced-motion:reduce){
+  .loader-bubble,.site-loader-bar{animation:none}
+  .site-loader-bar{transform:translateX(0);width:100%}
+  .site-loader{transition:none}
+}
