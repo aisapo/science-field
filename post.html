@@ -29,7 +29,7 @@
       <h1>{{ page.title }}</h1>
       <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y.%m.%d" }}</time>
       {% if page.thumbnail %}
-      <img class="post-hero" src="{{ page.thumbnail | relative_url }}" alt="">
+      <img class="post-hero" src="{{ page.thumbnail }}" alt="">
       {% endif %}
       <button class="favorite-button" type="button" aria-pressed="false"
         data-favorite-url="{{ page.url | relative_url }}"
